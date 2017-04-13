@@ -1,0 +1,12 @@
+.estate-block{
+    padding: 10px;
+    border: 1px solid rgba(46, 255, 49, 0.67);
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.position{
+    position: absolute;
+    bottom: -20px;
+    right: 10px;
+}
