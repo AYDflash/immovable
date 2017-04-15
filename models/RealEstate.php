@@ -8,14 +8,18 @@
  */
 class RealEstate
 {
+    const SHOW_BY_DEFAULT = 6;
 
-    public static function getAllEstates()
+    public static function getListEstates($page = 1)
     {
-        $db = Db::getConnection();
+        $page = intval($page);
+        $offset = self::SHOW_BY_DEFAULT * ($page - 1);
 
+        $db = Db::getConnection();
         $estateList = array();
 
-        $query = "SELECT * FROM schm.real_estate ORDER BY re_id DESC";
+        $query = "SELECT * FROM schm.real_estate ORDER BY re_id DESC LIMIT ". self::SHOW_BY_DEFAULT.
+                " OFFSET ".$offset;
         $result = $db->query($query);
 
         $i = 0;
@@ -41,5 +45,17 @@ class RealEstate
         }
 
         return $estateList;
+    }
+
+    public static function getTotalRealEstates()
+    {
+        $db = Db::getConnection();
+
+        $result = $db->query("SELECT COUNT(*) AS count FROM schm.real_estate");
+        $result->setFetchMode(PDO::FETCH_ASSOC);
+
+        $row = $result->fetch();
+
+        return $row['count'];
     }
 }
