@@ -6,6 +6,7 @@
             <div class="col-md-9"></div>
             <div class="col-md-3">
                 <a href="/client/login">Войти</a>
+                <a href="/account/">Аккаунт</a>
             </div>
         </div>
         <hr>

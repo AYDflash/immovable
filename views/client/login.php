@@ -15,7 +15,7 @@
             <form action="#" method="POST">
                 <input type="text" name="phone" placeholder="+380671948742" value="<?php echo $phone; ?>">
                 <input type="password" name="password" placeholder="Пароль" value="<?php echo $password; ?>">
-                <input type="submit">
+                <input type="submit" name="submit">
             </form>
         </div>
     </div>

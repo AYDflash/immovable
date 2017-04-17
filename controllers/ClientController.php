@@ -22,12 +22,9 @@ class ClientController
                 $errors[] = 'Неправильный пароль';
             }
 
-            if (!Client::checkPhoneExists($phone)) {
-                $errors[] = 'Такой телефон уже используется';
-            }
-
             $clientId = Client::checkClientData($phone, $password);
 
+            echo $clientId;
             if ($clientId == false) {
                 $errors[] = 'Неверные данные для входа на сайт';
             } else {
@@ -42,6 +39,13 @@ class ClientController
         require_once ROOT . '/views/client/login.php';
 
         return true;
+    }
+
+    public function actionLogout()
+    {
+        unset($_SESSION['client']);
+
+        header("Location: /");
     }
 
 }
